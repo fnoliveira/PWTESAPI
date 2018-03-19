@@ -21,6 +21,7 @@ import { FuseEcommerceOrdersComponent } from './orders/orders.component';
 import { EcommerceOrdersService } from './orders/orders.service';
 import { FuseEcommerceOrderComponent } from './order/order.component';
 import { EcommerceOrderService } from './order/order.service';
+import {AuthGuard} from '../../../../auth/_guards/auth.guard';
 
 const routes: Routes = [
     {
@@ -29,6 +30,7 @@ const routes: Routes = [
         resolve  : {
             data: EcommerceDashboardService
         }
+
     },
     {
         path     : 'products',

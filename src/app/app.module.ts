@@ -7,6 +7,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import 'hammerjs';
 
+import { AuthModule } from './auth/auth.module';
+
 import { FuseModule } from '@fuse/fuse.module';
 import { FuseSharedModule } from '@fuse/shared.module';
 
@@ -16,15 +18,10 @@ import { AppComponent } from './app.component';
 import { FuseFakeDbService } from './fuse-fake-db/fuse-fake-db.service';
 import { FuseMainModule } from './main/main.module';
 
-
 const appRoutes: Routes = [
     {
-        path        : 'apps',
+        path: 'apps',
         loadChildren: './main/content/apps/apps.module#FuseAppsModule'
-    },
-    {
-        path      : '**',
-        redirectTo: 'sample'
     }
 ];
 
@@ -32,30 +29,25 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent
     ],
-    imports     : [
+    imports: [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
         RouterModule.forRoot(appRoutes),
-
         TranslateModule.forRoot(),
         InMemoryWebApiModule.forRoot(FuseFakeDbService, {
-            delay             : 0,
+            delay: 0,
             passThruUnknownUrl: true
         }),
 
-        
-
-        // Fuse Main and Shared modules
         FuseModule.forRoot(fuseConfig),
         FuseSharedModule,
-
+        AuthModule,
         FuseMainModule
     ],
-    bootstrap   : [
+    bootstrap: [
         AppComponent
     ]
 })
-export class AppModule
-{
+export class AppModule {
 }
