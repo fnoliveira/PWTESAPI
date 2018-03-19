@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
+import { environment } from '../../../environments/environment';
 
 import {TOKEN_AUTH_PASSWORD, TOKEN_AUTH_USERNAME} from '../auth.constant';
 
 @Injectable()
 export class AuthenticationService {
-  static AUTH_TOKEN = '/oauth/token';
+  static AUTH_TOKEN = environment.apiUrlAuth + '/oauth/token';
 
   constructor(private http: Http) {
   }
