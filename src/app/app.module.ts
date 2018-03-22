@@ -17,11 +17,14 @@ import { fuseConfig } from './fuse-config';
 import { AppComponent } from './app.component';
 import { FuseFakeDbService } from './fuse-fake-db/fuse-fake-db.service';
 import { FuseMainModule } from './main/main.module';
-
+import { FuseErrorsModule } from './errors/errors.module';
 const appRoutes: Routes = [
     {
         path: 'apps',
         loadChildren: './main/content/apps/apps.module#FuseAppsModule'
+    },
+    {
+        path: '**', redirectTo: '/404'
     }
 ];
 
@@ -43,6 +46,7 @@ const appRoutes: Routes = [
         FuseModule.forRoot(fuseConfig),
         FuseSharedModule,
         AuthModule,
+        FuseErrorsModule,
         FuseMainModule
     ],
     bootstrap: [
