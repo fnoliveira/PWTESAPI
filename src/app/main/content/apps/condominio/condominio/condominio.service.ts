@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
-export class EcommerceProductService implements Resolve<any>
+export class CondominioProductService implements Resolve<any>
 {
     routeParams: any;
     product: any;

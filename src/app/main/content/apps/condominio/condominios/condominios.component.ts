@@ -14,15 +14,15 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseUtils } from '@fuse/utils';
 
-import { EcommerceProductsService } from './products.service';
+import { CondominioProductsService } from './condominios.service';
 
 @Component({
-    selector   : 'fuse-e-commerce-products',
-    templateUrl: './products.component.html',
-    styleUrls  : ['./products.component.scss'],
+    selector   : 'fuse-condominio-condominios',
+    templateUrl: './condominios.component.html',
+    styleUrls  : ['./condominios.component.scss'],
     animations : fuseAnimations
 })
-export class FuseEcommerceProductsComponent implements OnInit
+export class FuseCondominioProductsComponent implements OnInit
 {
     dataSource: FilesDataSource | null;
     displayedColumns = ['id', 'image', 'name', 'category', 'price', 'quantity', 'active'];
@@ -32,7 +32,7 @@ export class FuseEcommerceProductsComponent implements OnInit
     @ViewChild(MatSort) sort: MatSort;
 
     constructor(
-        private productsService: EcommerceProductsService
+        private productsService: CondominioProductsService
     )
     {
     }
@@ -79,7 +79,7 @@ export class FilesDataSource extends DataSource<any>
     }
 
     constructor(
-        private productsService: EcommerceProductsService,
+        private productsService: CondominioProductsService,
         private _paginator: MatPaginator,
         private _sort: MatSort
     )

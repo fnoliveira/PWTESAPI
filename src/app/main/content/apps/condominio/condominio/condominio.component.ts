@@ -13,18 +13,18 @@ import { Subscription } from 'rxjs/Subscription';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseUtils } from '@fuse/utils';
 
-import { Product } from './product.model';
-import { EcommerceProductService } from './product.service';
+import { Product } from './condominio.model';
+import { CondominioProductService } from './condominio.service';
 import { Location } from '@angular/common';
 
 @Component({
     selector     : 'fuse-e-commerce-product',
-    templateUrl  : './product.component.html',
-    styleUrls    : ['./product.component.scss'],
+    templateUrl  : './condominio.component.html',
+    styleUrls    : ['./condominio.component.scss'],
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class FuseEcommerceProductComponent implements OnInit, OnDestroy
+export class FuseCondominioProductComponent implements OnInit, OnDestroy
 {
     product = new Product();
     onProductChanged: Subscription;
@@ -32,7 +32,7 @@ export class FuseEcommerceProductComponent implements OnInit, OnDestroy
     productForm: FormGroup;
 
     constructor(
-        private productService: EcommerceProductService,
+        private productService: CondominioProductService,
         private formBuilder: FormBuilder,
         public snackBar: MatSnackBar,
         private location: Location

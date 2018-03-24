@@ -3,7 +3,8 @@ export const locale = {
     data: {
         'NAV': {
             'APPLICATIONS': 'Applications',
-            'ECOMMERCE'   : 'E-Commerce'
+            'DASHBOARDS'  : 'Dashboards',
+            'CONFIGURACAO'  : 'Configurações'
         }
     }
 };

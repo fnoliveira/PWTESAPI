@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class EcommerceProductsService implements Resolve<any>
+export class ProjectDashboardService implements Resolve<any>
 {
-    products: any[];
-    onProductsChanged: BehaviorSubject<any> = new BehaviorSubject({});
+    projects: any[];
+    widgets: any[];
 
     constructor(
         private http: HttpClient
@@ -28,7 +28,8 @@ export class EcommerceProductsService implements Resolve<any>
         return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.getProducts()
+                this.getProjects(),
+                this.getWidgets()
             ]).then(
                 () => {
                     resolve();
@@ -38,13 +39,23 @@ export class EcommerceProductsService implements Resolve<any>
         });
     }
 
-    getProducts(): Promise<any>
+    getProjects(): Promise<any>
     {
         return new Promise((resolve, reject) => {
-            this.http.get('api/e-commerce-products')
+            this.http.get('api/project-dashboard-projects')
                 .subscribe((response: any) => {
-                    this.products = response;
-                    this.onProductsChanged.next(this.products);
+                    this.projects = response;
+                    resolve(response);
+                }, reject);
+        });
+    }
+
+    getWidgets(): Promise<any>
+    {
+        return new Promise((resolve, reject) => {
+            this.http.get('api/project-dashboard-widgets')
+                .subscribe((response: any) => {
+                    this.widgets = response;
                     resolve(response);
                 }, reject);
         });

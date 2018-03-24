@@ -6,7 +6,14 @@ import { FuseAngularMaterialModule } from '../components/angular-material/angula
 import { FuseSharedModule } from '@fuse/shared.module';
 
 const routes = [
-   
+    {
+        path        : 'dashboards/analytics',
+        loadChildren: './dashboards/analytics/analytics.module#FuseAnalyticsDashboardModule'
+    },
+    {
+        path        : 'dashboards/project',
+        loadChildren: './dashboards/project/project.module#FuseProjectDashboardModule'
+    },
     {
         path        : 'e-commerce',
         loadChildren: './e-commerce/e-commerce.module#FuseEcommerceModule'

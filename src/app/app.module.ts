@@ -24,7 +24,8 @@ const appRoutes: Routes = [
         loadChildren: './main/content/apps/apps.module#FuseAppsModule'
     },
     {
-        path: '**', redirectTo: '/apps/e-commerce/dashboard'
+        path      : '**',
+        redirectTo: 'apps/dashboards/analytics'
     }
 ];
 

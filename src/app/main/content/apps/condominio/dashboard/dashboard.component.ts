@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 import { fuseAnimations } from '@fuse/animations';
 
-import { EcommerceDashboardService } from './dashboard.service';
+import { CondominioDashboardService } from './dashboard.service';
 
 @Component({
     selector     : 'fuse-e-commerce-dashboard',
@@ -11,7 +11,7 @@ import { EcommerceDashboardService } from './dashboard.service';
     encapsulation: ViewEncapsulation.None,
     animations   : fuseAnimations
 })
-export class FuseEcommerceDashboardComponent
+export class FuseCondominioDashboardComponent
 {
     projects: any[];
     selectedProject: any;
@@ -21,7 +21,7 @@ export class FuseEcommerceDashboardComponent
     widget6: any = {};
     widget7: any = {};
 
-    constructor(private projectsDashboardService: EcommerceDashboardService)
+    constructor(private projectsDashboardService: CondominioDashboardService)
     {
         this.projects = this.projectsDashboardService.projects;
         this.selectedProject = this.projects[0];
