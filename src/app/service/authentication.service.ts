@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../environments/environment';
 
-import {TOKEN_AUTH_PASSWORD, TOKEN_AUTH_USERNAME} from '../auth.constant';
+import {TOKEN_AUTH_PASSWORD, TOKEN_AUTH_USERNAME} from './../auth/auth.constant';
 
 @Injectable()
 export class AuthenticationService {

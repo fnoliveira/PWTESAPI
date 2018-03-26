@@ -11,39 +11,39 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
 
 import { FuseCondominioDashboardComponent } from './dashboard/dashboard.component';
-import { CondominioDashboardService } from './dashboard/dashboard.service';
-import { FuseCondominioProductsComponent } from './condominios/condominios.component';
-import { CondominioProductsService } from './condominios/condominios.service';
-import { FuseCondominioProductComponent } from './condominio/condominio.component';
-import { CondominioProductService } from './condominio/condominio.service';
+import { MeuCondominioDashboardService } from './../../../../service/meu-condominio.dashboard.service';
+import { FuseCondominiosComponent } from './condominios/condominios.component';
+import { MeuCondominioCondominiosService } from './../../../../service/meu-condominio.condominios.service';
+import { FuseCondominioComponent } from './condominio/condominio.component';
+import { MeuCondominioCondominioService } from './../../../../service/meu-condominio.condominio.service'
 
 const routes: Routes = [
     {
-        path     : 'dashboard',
+        path: 'dashboard',
         component: FuseCondominioDashboardComponent,
-        resolve  : {
-            data: CondominioDashboardService
+        resolve: {
+            data: MeuCondominioDashboardService
         }
     },
     {
-        path     : 'products',
-        component: FuseCondominioProductsComponent,
-        resolve  : {
-            data: CondominioProductsService
+        path: 'condominios',
+        component: FuseCondominiosComponent,
+        resolve: {
+            data: MeuCondominioCondominiosService
         }
     },
     {
-        path     : 'products/:id',
-        component: FuseCondominioProductComponent,
-        resolve  : {
-            data: CondominioProductService
+        path: 'condominios/:id',
+        component: FuseCondominioComponent,
+        resolve: {
+            data: MeuCondominioCondominioService
         }
     },
     {
-        path     : 'products/:id/:handle',
-        component: FuseCondominioProductComponent,
-        resolve  : {
-            data: CondominioProductService
+        path: 'condominios/:id/:handle',
+        component: FuseCondominioComponent,
+        resolve: {
+            data: MeuCondominioCondominioService
         }
     }
 ];
@@ -51,10 +51,10 @@ const routes: Routes = [
 @NgModule({
     declarations: [
         FuseCondominioDashboardComponent,
-        FuseCondominioProductsComponent,
-        FuseCondominioProductComponent,
+        FuseCondominiosComponent,
+        FuseCondominioComponent,
     ],
-    imports     : [
+    imports: [
         RouterModule.forChild(routes),
 
         CdkTableModule,
@@ -78,12 +78,11 @@ const routes: Routes = [
         FuseSharedModule,
         FuseWidgetModule,
     ],
-    providers   : [
-        CondominioDashboardService,
-        CondominioProductsService,
-        CondominioProductService,
+    providers: [
+        MeuCondominioDashboardService,
+        MeuCondominioCondominiosService,
+        MeuCondominioCondominioService,
     ]
 })
-export class FuseCondominioModule
-{
+export class FuseMeuCondominioModule {
 }

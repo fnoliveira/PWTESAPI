@@ -2,7 +2,7 @@ import { MatChipInputEvent } from '@angular/material';
 
 import { FuseUtils } from '@fuse/utils';
 
-export class Product
+export class Condominio
 {
     id: string;
     name: string;

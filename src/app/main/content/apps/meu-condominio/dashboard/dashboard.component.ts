@@ -2,10 +2,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 import { fuseAnimations } from '@fuse/animations';
 
-import { CondominioDashboardService } from './dashboard.service';
+import { MeuCondominioDashboardService } from './../../../../../service/meu-condominio.dashboard.service';
 
 @Component({
-    selector     : 'fuse-e-commerce-dashboard',
+    selector     : 'fuse-meu-condominio-dashboard',
     templateUrl  : './dashboard.component.html',
     styleUrls    : ['./dashboard.component.scss'],
     encapsulation: ViewEncapsulation.None,
@@ -21,7 +21,7 @@ export class FuseCondominioDashboardComponent
     widget6: any = {};
     widget7: any = {};
 
-    constructor(private projectsDashboardService: CondominioDashboardService)
+    constructor(private projectsDashboardService: MeuCondominioDashboardService)
     {
         this.projects = this.projectsDashboardService.projects;
         this.selectedProject = this.projects[0];

@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { Http, HttpModule } from '@angular/http';
 import { AuthConfig, AuthHttp } from 'angular2-jwt';
 
-import { UserService } from './_services/user.service';
+import { UserService } from './../service/user.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { AdminAuthGuard } from './_guards/admin-auth-guard.service';
-import { AuthenticationService } from './_services/authentication.service';
+import { AuthenticationService } from './../service/authentication.service';
 import { TOKEN_NAME } from './auth.constant';
 import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';

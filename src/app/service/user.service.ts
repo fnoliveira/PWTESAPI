@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {JwtHelper} from 'angular2-jwt';
 
-import {TOKEN_NAME} from '../auth.constant';
+import {TOKEN_NAME} from './../auth/auth.constant';
 
 @Injectable()
 export class UserService {

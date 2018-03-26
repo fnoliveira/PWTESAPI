@@ -15,8 +15,8 @@ const routes = [
         loadChildren: './dashboards/project/project.module#FuseProjectDashboardModule'
     },
     {
-        path        : 'e-commerce',
-        loadChildren: './e-commerce/e-commerce.module#FuseEcommerceModule'
+        path        : 'meu-condominio',
+        loadChildren: './meu-condominio/meu-condominio.module#FuseMeuCondominioModule'
     }
 ];
 

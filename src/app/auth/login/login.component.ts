@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../_services/authentication.service';
-import { UserService } from '../_services/user.service';
+import { AuthenticationService } from './../../service/authentication.service';
+import { UserService } from './../../service/user.service';
 
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';

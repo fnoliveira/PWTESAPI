@@ -6,16 +6,16 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
-export class CondominioProductService implements Resolve<any>
+export class MeuCondominioCondominioService implements Resolve<any>
 {
     routeParams: any;
-    product: any;
-    onProductChanged: BehaviorSubject<any> = new BehaviorSubject({});
+    condominio: any;
+    condominios: any[];
+    onCondominioChanged: BehaviorSubject<any> = new BehaviorSubject({});
 
     constructor(
         private http: HttpClient
-    )
-    {
+    ) {
     }
 
     /**
@@ -24,15 +24,14 @@ export class CondominioProductService implements Resolve<any>
      * @param {RouterStateSnapshot} state
      * @returns {Observable<any> | Promise<any> | any}
      */
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
-    {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
 
         this.routeParams = route.params;
 
         return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.getProduct()
+                this.getCondominio()
             ]).then(
                 () => {
                     resolve();
@@ -42,40 +41,35 @@ export class CondominioProductService implements Resolve<any>
         });
     }
 
-    getProduct(): Promise<any>
-    {
+    getCondominio(): Promise<any> {
         return new Promise((resolve, reject) => {
-            if ( this.routeParams.id === 'new' )
-            {
-                this.onProductChanged.next(false);
+            if (this.routeParams.id === 'new') {
+                this.onCondominioChanged.next(false);
                 resolve(false);
             }
-            else
-            {
+            else {
                 this.http.get('api/e-commerce-products/' + this.routeParams.id)
                     .subscribe((response: any) => {
-                        this.product = response;
-                        this.onProductChanged.next(this.product);
+                        this.condominio = response;
+                        this.onCondominioChanged.next(this.condominio);
                         resolve(response);
                     }, reject);
             }
         });
     }
 
-    saveProduct(product)
-    {
+    saveCondominio(condominio) {
         return new Promise((resolve, reject) => {
-            this.http.post('api/e-commerce-products/' + product.id, product)
+            this.http.post('api/e-commerce-products/' + condominio.id, condominio)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);
         });
     }
 
-    addProduct(product)
-    {
+    addCondominio(condominio) {
         return new Promise((resolve, reject) => {
-            this.http.post('api/e-commerce-products/', product)
+            this.http.post('api/e-commerce-products/', condominio)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);

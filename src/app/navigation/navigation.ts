@@ -25,21 +25,7 @@ export const navigation = [
                         'id': 'condominio',
                         'title': 'Condominio',
                         'type': 'item',
-                        'url': '/apps/e-commerce/dashboard'
-                    },
-                    {
-                        'id': 'products',
-                        'title': 'Products',
-                        'type': 'item',
-                        'url': '/apps/e-commerce/products',
-                        'exactMatch': true
-                    },
-                    {
-                        'id': 'productDetail',
-                        'title': 'Product Detail',
-                        'type': 'item',
-                        'url': '/apps/e-commerce/products/1/printed-dress',
-                        'exactMatch': true
+                        'url': '/apps/meu-condominio/condominios',
                     }
                 ]
             }

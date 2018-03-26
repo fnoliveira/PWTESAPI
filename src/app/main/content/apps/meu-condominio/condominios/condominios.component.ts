@@ -14,16 +14,15 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseUtils } from '@fuse/utils';
 
-import { CondominioProductsService } from './condominios.service';
+import { MeuCondominioCondominiosService } from './../../../../../service/meu-condominio.condominios.service';
 
 @Component({
-    selector   : 'fuse-condominio-condominios',
+    selector: 'fuse-meu-condominio-condominios',
     templateUrl: './condominios.component.html',
-    styleUrls  : ['./condominios.component.scss'],
-    animations : fuseAnimations
+    styleUrls: ['./condominios.component.scss'],
+    animations: fuseAnimations
 })
-export class FuseCondominioProductsComponent implements OnInit
-{
+export class FuseCondominiosComponent implements OnInit {
     dataSource: FilesDataSource | null;
     displayedColumns = ['id', 'image', 'name', 'category', 'price', 'quantity', 'active'];
 
@@ -32,24 +31,21 @@ export class FuseCondominioProductsComponent implements OnInit
     @ViewChild(MatSort) sort: MatSort;
 
     constructor(
-        private productsService: CondominioProductsService
-    )
-    {
+        private condominiosService: MeuCondominioCondominiosService
+    ) {
     }
 
-    ngOnInit()
-    {
-        this.dataSource = new FilesDataSource(this.productsService, this.paginator, this.sort);
+    ngOnInit() {
+        this.dataSource = new FilesDataSource(this.condominiosService, this.paginator, this.sort);
         Observable.fromEvent(this.filter.nativeElement, 'keyup')
-                  .debounceTime(150)
-                  .distinctUntilChanged()
-                  .subscribe(() => {
-                      if ( !this.dataSource )
-                      {
-                          return;
-                      }
-                      this.dataSource.filter = this.filter.nativeElement.value;
-                  });
+            .debounceTime(150)
+            .distinctUntilChanged()
+            .subscribe(() => {
+                if (!this.dataSource) {
+                    return;
+                }
+                this.dataSource.filter = this.filter.nativeElement.value;
+            });
     }
 }
 
@@ -58,48 +54,42 @@ export class FilesDataSource extends DataSource<any>
     _filterChange = new BehaviorSubject('');
     _filteredDataChange = new BehaviorSubject('');
 
-    get filteredData(): any
-    {
+    get filteredData(): any {
         return this._filteredDataChange.value;
     }
 
-    set filteredData(value: any)
-    {
+    set filteredData(value: any) {
         this._filteredDataChange.next(value);
     }
 
-    get filter(): string
-    {
+    get filter(): string {
         return this._filterChange.value;
     }
 
-    set filter(filter: string)
-    {
+    set filter(filter: string) {
         this._filterChange.next(filter);
     }
 
     constructor(
-        private productsService: CondominioProductsService,
+        private condominiosService: MeuCondominioCondominiosService,
         private _paginator: MatPaginator,
         private _sort: MatSort
-    )
-    {
+    ) {
         super();
-        this.filteredData = this.productsService.products;
+        this.filteredData = this.condominiosService.condominios;
     }
 
     /** Connect function called by the table to retrieve one stream containing the data to render. */
-    connect(): Observable<any[]>
-    {
+    connect(): Observable<any[]> {
         const displayDataChanges = [
-            this.productsService.onProductsChanged,
+            this.condominiosService.onCondominiosChanged,
             this._paginator.page,
             this._filterChange,
             this._sort.sortChange
         ];
 
         return Observable.merge(...displayDataChanges).map(() => {
-            let data = this.productsService.products.slice();
+            let data = this.condominiosService.condominios.slice();
 
             data = this.filterData(data);
 
@@ -113,19 +103,15 @@ export class FilesDataSource extends DataSource<any>
         });
     }
 
-    filterData(data)
-    {
-        if ( !this.filter )
-        {
+    filterData(data) {
+        if (!this.filter) {
             return data;
         }
         return FuseUtils.filterArrayByString(data, this.filter);
     }
 
-    sortData(data): any[]
-    {
-        if ( !this._sort.active || this._sort.direction === '' )
-        {
+    sortData(data): any[] {
+        if (!this._sort.active || this._sort.direction === '') {
             return data;
         }
 
@@ -133,8 +119,7 @@ export class FilesDataSource extends DataSource<any>
             let propertyA: number | string = '';
             let propertyB: number | string = '';
 
-            switch ( this._sort.active )
-            {
+            switch (this._sort.active) {
                 case 'id':
                     [propertyA, propertyB] = [a.id, b.id];
                     break;
@@ -162,7 +147,6 @@ export class FilesDataSource extends DataSource<any>
         });
     }
 
-    disconnect()
-    {
+    disconnect() {
     }
 }

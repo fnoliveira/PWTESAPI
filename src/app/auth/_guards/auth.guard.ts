@@ -3,7 +3,7 @@ import {Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '
 import {tokenNotExpired} from 'angular2-jwt';
 
 import {TOKEN_NAME} from '../auth.constant';
-import {UserService} from '../_services/user.service';
+import {UserService} from './../../service/user.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
