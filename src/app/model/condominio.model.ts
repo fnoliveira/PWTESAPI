@@ -29,28 +29,28 @@ export class Condominio
     extraShippingFee: number;
     active: boolean;
 
-    constructor(product?)
+    constructor(condominio?)
     {
-        product = product || {};
-        this.id = product.id || FuseUtils.generateGUID();
-        this.name = product.name || '';
-        this.handle = product.handle || FuseUtils.handleize(this.name);
-        this.description = product.description || '';
-        this.categories = product.categories || [];
-        this.tags = product.tags || [];
-        this.images = product.images || [];
-        this.priceTaxExcl = product.priceTaxExcl || 0;
-        this.priceTaxIncl = product.priceTaxIncl || 0;
-        this.taxRate = product.taxRate || 0;
-        this.comparedPrice = product.comparedPrice || 0;
-        this.quantity = product.quantity || 0;
-        this.sku = product.sku || 0;
-        this.width = product.width || 0;
-        this.height = product.height || 0;
-        this.depth = product.depth || 0;
-        this.weight = product.weight || 0;
-        this.extraShippingFee = product.extraShippingFee || 0;
-        this.active = product.active || true;
+        condominio = condominio || {};
+        this.id = condominio.id || FuseUtils.generateGUID();
+        this.name = condominio.name || '';
+        this.handle = condominio.handle || FuseUtils.handleize(this.name);
+        this.description = condominio.description || '';
+        this.categories = condominio.categories || [];
+        this.tags = condominio.tags || [];
+        this.images = condominio.images || [];
+        this.priceTaxExcl = condominio.priceTaxExcl || 0;
+        this.priceTaxIncl = condominio.priceTaxIncl || 0;
+        this.taxRate = condominio.taxRate || 0;
+        this.comparedPrice = condominio.comparedPrice || 0;
+        this.quantity = condominio.quantity || 0;
+        this.sku = condominio.sku || 0;
+        this.width = condominio.width || 0;
+        this.height = condominio.height || 0;
+        this.depth = condominio.depth || 0;
+        this.weight = condominio.weight || 0;
+        this.extraShippingFee = condominio.extraShippingFee || 0;
+        this.active = condominio.active || true;
     }
 
     addCategory(event: MatChipInputEvent): void

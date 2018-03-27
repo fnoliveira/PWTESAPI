@@ -18,7 +18,7 @@ import { MeuCondominioCondominioService } from './../../../../../service/meu-con
 import { Location } from '@angular/common';
 
 @Component({
-    selector: 'fuse-meucondominio-condominio',
+    selector: 'fuse-meu-condominio-condominio',
     templateUrl: './condominio.component.html',
     styleUrls: ['./condominio.component.scss'],
     encapsulation: ViewEncapsulation.None,
@@ -118,7 +118,7 @@ export class FuseCondominioComponent implements OnInit, OnDestroy {
                 });
 
                 // Change the location with new one
-                this.location.go('apps/e-commerce/products/' + this.condominio.id + '/' + this.condominio.handle);
+                this.location.go('apps/meu-condominio/condominios/' + this.condominio.id + '/' + this.condominio.handle);
             });
     }
 }

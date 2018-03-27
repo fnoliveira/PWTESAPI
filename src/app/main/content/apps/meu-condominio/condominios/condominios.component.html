@@ -1,4 +1,4 @@
-<div id="products" class="page-layout carded fullwidth" fusePerfectScrollbar>
+<div id="condominios" class="page-layout carded fullwidth" fusePerfectScrollbar>
 
     <!-- TOP BACKGROUND -->
     <div class="top-bg mat-accent-bg"></div>
@@ -16,7 +16,7 @@
             <div class="logo my-12 m-sm-0"
                  fxLayout="row" fxLayoutAlign="start center">
                 <mat-icon class="logo-icon mr-16" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">shopping_basket</mat-icon>
-                <span class="logo-text h1" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">Products</span>
+                <span class="logo-text h1" *fuseIfOnDom [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">condominios</span>
             </div>
             <!-- / APP TITLE -->
 
@@ -34,8 +34,8 @@
 
             <button mat-raised-button
                     [routerLink]="'/apps/meu-condominio/condominios/new'"
-                    class="add-product-button mat-white-bg my-12 mt-sm-0">
-                <span>ADD NEW PRODUCT</span>
+                    class="add-condominio-button mat-white-bg my-12 mt-sm-0">
+                <span>ADD NEW CONDOMINIO</span>
             </button>
 
         </div>
@@ -44,7 +44,7 @@
         <!-- CONTENT CARD -->
         <div class="content-card mat-white-bg">
 
-            <mat-table class="products-table"
+            <mat-table class="condominios-table"
                        #table [dataSource]="dataSource"
                        matSort
                        [@animateStagger]="{value:'50'}"
@@ -53,36 +53,36 @@
                 <!-- ID Column -->
                 <ng-container cdkColumnDef="id">
                     <mat-header-cell *cdkHeaderCellDef mat-sort-header>ID</mat-header-cell>
-                    <mat-cell *cdkCellDef="let product">
-                        <p class="text-truncate">{{product.id}}</p>
+                    <mat-cell *cdkCellDef="let condominio">
+                        <p class="text-truncate">{{condominio.id}}</p>
                     </mat-cell>
                 </ng-container>
 
                 <!-- Image Column -->
                 <ng-container cdkColumnDef="image">
                     <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
-                    <mat-cell *cdkCellDef="let product">
-                        <img class="product-image"
-                             *ngIf="product.images[0]" [alt]="product.name"
-                             [src]="product.images[0].url"/>
-                        <img *ngIf="!product.images[0]" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+                    <mat-cell *cdkCellDef="let condominio">
+                        <img class="condominio-image"
+                             *ngIf="condominio.images[0]" [alt]="condominio.name"
+                             [src]="condominio.images[0].url"/>
+                        <img *ngIf="!condominio.images[0]" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
                     </mat-cell>
                 </ng-container>
 
                 <!-- Name Column -->
                 <ng-container cdkColumnDef="name">
                     <mat-header-cell *cdkHeaderCellDef mat-sort-header>Name</mat-header-cell>
-                    <mat-cell *cdkCellDef="let product">
-                        <p class="text-truncate">{{product.name}}</p>
+                    <mat-cell *cdkCellDef="let condominio">
+                        <p class="text-truncate">{{condominio.name}}</p>
                     </mat-cell>
                 </ng-container>
 
                 <!-- Category Column -->
                 <ng-container cdkColumnDef="category">
                     <mat-header-cell *cdkHeaderCellDef fxHide mat-sort-header fxShow.gt-md>Category</mat-header-cell>
-                    <mat-cell *cdkCellDef="let product" fxHide fxShow.gt-md>
+                    <mat-cell *cdkCellDef="let condominio" fxHide fxShow.gt-md>
                         <p class="category text-truncate">
-                            {{product.categories[0]}}
+                            {{condominio.categories[0]}}
                         </p>
                     </mat-cell>
                 </ng-container>
@@ -90,9 +90,9 @@
                 <!-- Price Column -->
                 <ng-container cdkColumnDef="price">
                     <mat-header-cell *cdkHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Price</mat-header-cell>
-                    <mat-cell *cdkCellDef="let product" fxHide fxShow.gt-xs>
+                    <mat-cell *cdkCellDef="let condominio" fxHide fxShow.gt-xs>
                         <p class="price text-truncate">
-                            {{product.priceTaxIncl | currency:'USD':'symbol'}}
+                            {{condominio.priceTaxIncl | currency:'USD':'symbol'}}
                         </p>
                     </mat-cell>
                 </ng-container>
@@ -100,13 +100,13 @@
                 <!-- Quantity Column -->
                 <ng-container cdkColumnDef="quantity">
                     <mat-header-cell *cdkHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Quantity</mat-header-cell>
-                    <mat-cell *cdkCellDef="let product" fxHide fxShow.gt-sm>
+                    <mat-cell *cdkCellDef="let condominio" fxHide fxShow.gt-sm>
 
                         <span class="quantity-indicator text-truncate"
-                              [ngClass]="{'mat-red-500-bg':product.quantity <= 5, 'mat-amber-500-bg':product.quantity > 5 && product.quantity <= 25,'mat-green-600-bg':product.quantity > 25}">
+                              [ngClass]="{'mat-red-500-bg':condominio.quantity <= 5, 'mat-amber-500-bg':condominio.quantity > 5 && condominio.quantity <= 25,'mat-green-600-bg':condominio.quantity > 25}">
                         </span>
                         <span>
-                            {{product.quantity}}
+                            {{condominio.quantity}}
                         </span>
 
                     </mat-cell>
@@ -115,18 +115,18 @@
                 <!-- Active Column -->
                 <ng-container cdkColumnDef="active">
                     <mat-header-cell *cdkHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Active</mat-header-cell>
-                    <mat-cell *cdkCellDef="let product" fxHide fxShow.gt-xs>
-                        <mat-icon *ngIf="product.active" class="active-icon mat-green-600-bg s-16">check</mat-icon>
-                        <mat-icon *ngIf="!product.active" class="active-icon mat-red-500-bg s-16">close</mat-icon>
+                    <mat-cell *cdkCellDef="let condominio" fxHide fxShow.gt-xs>
+                        <mat-icon *ngIf="condominio.active" class="active-icon mat-green-600-bg s-16">check</mat-icon>
+                        <mat-icon *ngIf="!condominio.active" class="active-icon mat-red-500-bg s-16">close</mat-icon>
                     </mat-cell>
                 </ng-container>
 
                 <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
 
-                <mat-row *cdkRowDef="let product; columns: displayedColumns;"
-                         class="product"
+                <mat-row *cdkRowDef="let condominio; columns: displayedColumns;"
+                         class="condominio"
                          matRipple
-                         [routerLink]="'/apps/e-commerce/products/'+product.id+'/'+product.handle">
+                         [routerLink]="'/apps/meu-condominio/condominios/'+condominio.id+'/'+condominio.handle">
                 </mat-row>
 
             </mat-table>
