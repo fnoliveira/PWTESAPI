@@ -24,7 +24,7 @@ import { MeuCondominioCondominiosService } from './../../../../../service/meu-co
 })
 export class FuseCondominiosComponent implements OnInit {
     dataSource: FilesDataSource | null;
-    displayedColumns = ['id', 'image', 'name', 'category', 'price', 'quantity', 'active'];
+    displayedColumns = ['condominioId', 'nome', 'cpfOuCnpj', 'finalidade', 'isEnable'];
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild('filter') filter: ElementRef;
@@ -120,23 +120,20 @@ export class FilesDataSource extends DataSource<any>
             let propertyB: number | string = '';
 
             switch (this._sort.active) {
-                case 'id':
-                    [propertyA, propertyB] = [a.id, b.id];
+                case 'condominioId':
+                    [propertyA, propertyB] = [a.condominioId, b.condominioId];
                     break;
-                case 'name':
-                    [propertyA, propertyB] = [a.name, b.name];
+                case 'nome':
+                    [propertyA, propertyB] = [a.nome, b.nome];
                     break;
-                case 'categories':
-                    [propertyA, propertyB] = [a.categories[0], b.categories[0]];
+                case 'cpfOuCnpj':
+                    [propertyA, propertyB] = [a.cpfOuCnpj, b.cpfOuCnpj];
                     break;
-                case 'price':
-                    [propertyA, propertyB] = [a.priceTaxIncl, b.priceTaxIncl];
+                case 'finalidade':
+                    [propertyA, propertyB] = [a.finalidade, b.finalidade];
                     break;
-                case 'quantity':
-                    [propertyA, propertyB] = [a.quantity, b.quantity];
-                    break;
-                case 'active':
-                    [propertyA, propertyB] = [a.active, b.active];
+                case 'isEnable':
+                    [propertyA, propertyB] = [a.isEnable, b.isEnable];
                     break;
             }
 

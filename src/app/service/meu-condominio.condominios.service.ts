@@ -38,8 +38,9 @@ export class MeuCondominioCondominiosService implements Resolve<any>
 
     getCondominios(): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.http.get('api/e-commerce-products')
+            this.http.get('http://localhost:9090/condominio/')
                 .subscribe((response: any) => {
+                    console.log(response);
                     this.condominios = response;
                     this.onCondominiosChanged.next(this.condominios);
                     resolve(response);

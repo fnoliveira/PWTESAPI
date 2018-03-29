@@ -51,73 +51,47 @@
                        fusePerfectScrollbar>
 
                 <!-- ID Column -->
-                <ng-container cdkColumnDef="id">
+                <ng-container cdkColumnDef="condominioId">
                     <mat-header-cell *cdkHeaderCellDef mat-sort-header>ID</mat-header-cell>
                     <mat-cell *cdkCellDef="let condominio">
-                        <p class="text-truncate">{{condominio.id}}</p>
-                    </mat-cell>
-                </ng-container>
-
-                <!-- Image Column -->
-                <ng-container cdkColumnDef="image">
-                    <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
-                    <mat-cell *cdkCellDef="let condominio">
-                        <img class="condominio-image"
-                             *ngIf="condominio.images[0]" [alt]="condominio.name"
-                             [src]="condominio.images[0].url"/>
-                        <img *ngIf="!condominio.images[0]" [src]="'assets/images/ecommerce/product-image-placeholder.png'">
+                        <p class="text-truncate">{{condominio.condominioId}}</p>
                     </mat-cell>
                 </ng-container>
 
                 <!-- Name Column -->
-                <ng-container cdkColumnDef="name">
-                    <mat-header-cell *cdkHeaderCellDef mat-sort-header>Name</mat-header-cell>
+                <ng-container cdkColumnDef="nome">
+                    <mat-header-cell *cdkHeaderCellDef mat-sort-header>Nome</mat-header-cell>
                     <mat-cell *cdkCellDef="let condominio">
-                        <p class="text-truncate">{{condominio.name}}</p>
+                        <p class="text-truncate">{{condominio.nome}}</p>
                     </mat-cell>
                 </ng-container>
 
                 <!-- Category Column -->
-                <ng-container cdkColumnDef="category">
-                    <mat-header-cell *cdkHeaderCellDef fxHide mat-sort-header fxShow.gt-md>Category</mat-header-cell>
+                <ng-container cdkColumnDef="cpfOuCnpj">
+                    <mat-header-cell *cdkHeaderCellDef fxHide mat-sort-header fxShow.gt-md>CPF/CNPJ</mat-header-cell>
                     <mat-cell *cdkCellDef="let condominio" fxHide fxShow.gt-md>
                         <p class="category text-truncate">
-                            {{condominio.categories[0]}}
+                            {{condominio.cpfOuCnpj}}
                         </p>
                     </mat-cell>
                 </ng-container>
 
                 <!-- Price Column -->
-                <ng-container cdkColumnDef="price">
-                    <mat-header-cell *cdkHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Price</mat-header-cell>
+                <ng-container cdkColumnDef="finalidade">
+                    <mat-header-cell *cdkHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Finalidade</mat-header-cell>
                     <mat-cell *cdkCellDef="let condominio" fxHide fxShow.gt-xs>
                         <p class="price text-truncate">
-                            {{condominio.priceTaxIncl | currency:'USD':'symbol'}}
+                            {{condominio.finalidade}}
                         </p>
                     </mat-cell>
                 </ng-container>
 
-                <!-- Quantity Column -->
-                <ng-container cdkColumnDef="quantity">
-                    <mat-header-cell *cdkHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Quantity</mat-header-cell>
-                    <mat-cell *cdkCellDef="let condominio" fxHide fxShow.gt-sm>
-
-                        <span class="quantity-indicator text-truncate"
-                              [ngClass]="{'mat-red-500-bg':condominio.quantity <= 5, 'mat-amber-500-bg':condominio.quantity > 5 && condominio.quantity <= 25,'mat-green-600-bg':condominio.quantity > 25}">
-                        </span>
-                        <span>
-                            {{condominio.quantity}}
-                        </span>
-
-                    </mat-cell>
-                </ng-container>
-
                 <!-- Active Column -->
-                <ng-container cdkColumnDef="active">
+                <ng-container cdkColumnDef="isEnable">
                     <mat-header-cell *cdkHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Active</mat-header-cell>
                     <mat-cell *cdkCellDef="let condominio" fxHide fxShow.gt-xs>
-                        <mat-icon *ngIf="condominio.active" class="active-icon mat-green-600-bg s-16">check</mat-icon>
-                        <mat-icon *ngIf="!condominio.active" class="active-icon mat-red-500-bg s-16">close</mat-icon>
+                        <mat-icon *ngIf="condominio.isEnable" class="active-icon mat-green-600-bg s-16">check</mat-icon>
+                        <mat-icon *ngIf="!condominio.isEnable" class="active-icon mat-red-500-bg s-16">close</mat-icon>
                     </mat-cell>
                 </ng-container>
 
@@ -126,7 +100,7 @@
                 <mat-row *cdkRowDef="let condominio; columns: displayedColumns;"
                          class="condominio"
                          matRipple
-                         [routerLink]="'/apps/meu-condominio/condominios/'+condominio.id+'/'+condominio.handle">
+                         [routerLink]="'/apps/meu-condominio/condominios/'+condominio.condominioId+'/'+condominio.nome">
                 </mat-row>
 
             </mat-table>

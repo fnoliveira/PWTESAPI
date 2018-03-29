@@ -48,6 +48,7 @@ export class MeuCondominioCondominioService implements Resolve<any>
                 resolve(false);
             }
             else {
+                console.log(this.routeParams.id);
                 this.http.get('api/e-commerce-products/' + this.routeParams.id)
                     .subscribe((response: any) => {
                         this.condominio = response;
