@@ -64,30 +64,18 @@ export class FuseCondominioComponent implements OnInit, OnDestroy {
     createCondominioForm() {
         return this.formBuilder.group({
             id: [this.condominio.id],
-            name: [this.condominio.name],
+            nome: [this.condominio.pessoa.nome],
             handle: [this.condominio.handle],
-            description: [this.condominio.description],
-            categories: [this.condominio.categories],
-            tags: [this.condominio.tags],
-            images: [this.condominio.images],
-            priceTaxExcl: [this.condominio.priceTaxExcl],
-            priceTaxIncl: [this.condominio.priceTaxIncl],
-            taxRate: [this.condominio.taxRate],
-            comparedPrice: [this.condominio.comparedPrice],
-            quantity: [this.condominio.quantity],
-            sku: [this.condominio.sku],
-            width: [this.condominio.width],
-            height: [this.condominio.height],
-            depth: [this.condominio.depth],
-            weight: [this.condominio.weight],
-            extraShippingFee: [this.condominio.extraShippingFee],
-            active: [this.condominio.active]
+            cpf_cnpj: [this.condominio.pessoa.cpfOuCnpj],
+            tipoCondominio: [this.condominio.tipoCondominio],
+            finalidade: [this.condominio.finalidade]
+            
         });
     }
 
     saveCondominio() {
         const data = this.condominioForm.getRawValue();
-        data.handle = FuseUtils.handleize(data.name);
+        data.handle = FuseUtils.handleize(data.nome);
         this.condominioService.saveCondominio(data)
             .then(() => {
 
@@ -104,7 +92,7 @@ export class FuseCondominioComponent implements OnInit, OnDestroy {
 
     addCondominio() {
         const data = this.condominioForm.getRawValue();
-        data.handle = FuseUtils.handleize(data.name);
+        data.handle = FuseUtils.handleize(data.nome);
         this.condominioService.addCondominio(data)
             .then(() => {
 

@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class MeuCondominioCondominiosService implements Resolve<any>
 {
-    condominios: any[];
+    condominios: any;
     onCondominiosChanged: BehaviorSubject<any> = new BehaviorSubject({});
 
     constructor(

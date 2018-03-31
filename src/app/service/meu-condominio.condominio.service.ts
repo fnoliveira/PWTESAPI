@@ -49,7 +49,7 @@ export class MeuCondominioCondominioService implements Resolve<any>
             }
             else {
                 console.log(this.routeParams.id);
-                this.http.get('api/e-commerce-products/' + this.routeParams.id)
+                this.http.get('http://localhost:9090/condominio/' + this.routeParams.id)
                     .subscribe((response: any) => {
                         this.condominio = response;
                         this.onCondominioChanged.next(this.condominio);

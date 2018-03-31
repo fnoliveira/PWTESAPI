@@ -24,7 +24,7 @@ import { MeuCondominioCondominiosService } from './../../../../../service/meu-co
 })
 export class FuseCondominiosComponent implements OnInit {
     dataSource: FilesDataSource | null;
-    displayedColumns = ['condominioId', 'nome', 'cpfOuCnpj', 'finalidade', 'isEnable'];
+    displayedColumns = ['id', 'nome', 'cpfOuCnpj', 'tipoCondominio', 'finalidade', 'isEnable'];
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild('filter') filter: ElementRef;
@@ -76,7 +76,7 @@ export class FilesDataSource extends DataSource<any>
         private _sort: MatSort
     ) {
         super();
-        this.filteredData = this.condominiosService.condominios;
+        this.filteredData = this.condominiosService.condominios.content;
     }
 
     /** Connect function called by the table to retrieve one stream containing the data to render. */
@@ -89,7 +89,8 @@ export class FilesDataSource extends DataSource<any>
         ];
 
         return Observable.merge(...displayDataChanges).map(() => {
-            let data = this.condominiosService.condominios.slice();
+
+            let data = this.condominiosService.condominios.content.slice();
 
             data = this.filterData(data);
 
@@ -120,15 +121,17 @@ export class FilesDataSource extends DataSource<any>
             let propertyB: number | string = '';
 
             switch (this._sort.active) {
-                case 'condominioId':
+                case 'id':
                     [propertyA, propertyB] = [a.condominioId, b.condominioId];
                     break;
                 case 'nome':
                     [propertyA, propertyB] = [a.nome, b.nome];
                     break;
-                case 'cpfOuCnpj':
-                    [propertyA, propertyB] = [a.cpfOuCnpj, b.cpfOuCnpj];
+
+                case 'tipoCondominio':
+                    [propertyA, propertyB] = [a.tipoCondominio, b.tipoCondominio];
                     break;
+
                 case 'finalidade':
                     [propertyA, propertyB] = [a.finalidade, b.finalidade];
                     break;
