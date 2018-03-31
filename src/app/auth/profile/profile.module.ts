@@ -5,7 +5,7 @@ import { MatButtonModule, MatDividerModule, MatIconModule, MatTabsModule } from 
 
 import { FuseSharedModule } from '@fuse/shared.module';
 
-import { ProfileService } from './profile.service';
+import { ProfileService } from './../../service/profile.service';
 import { FuseProfileComponent } from './profile.component';
 import { FuseProfileTimelineComponent } from './tabs/timeline/timeline.component';
 import { FuseProfileAboutComponent } from './tabs/about/about.component';
@@ -13,7 +13,7 @@ import { FuseProfilePhotosVideosComponent } from './tabs/photos-videos/photos-vi
 
 const routes = [
     {
-        path     : 'profile',
+        path     : 'auth/profile',
         component: FuseProfileComponent,
         resolve  : {
             profile: ProfileService

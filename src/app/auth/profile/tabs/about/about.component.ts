@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { fuseAnimations } from '@fuse/animations';
 
-import { ProfileService } from '../../profile.service';
+import { ProfileService } from './../../../../service/profile.service';
 
 @Component({
     selector   : 'fuse-profile-about',

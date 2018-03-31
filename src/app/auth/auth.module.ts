@@ -14,6 +14,7 @@ import { RegisterModule } from './register/register.module';
 import { ForgotPasswordModule } from './forgot-password/forgot-password.module';
 import { ResetPasswordModule } from './reset-password/reset-password.module';
 import { MailConfirmModule } from './mail-confirm/mail-confirm.module';
+import { ProfileModule } from './profile/profile.module';
 
 export function authHttpServiceFactory(http: Http) {
     return new AuthHttp(new AuthConfig({
@@ -33,6 +34,7 @@ export function authHttpServiceFactory(http: Http) {
         ForgotPasswordModule,
         ResetPasswordModule,
         MailConfirmModule,
+        ProfileModule,
         CommonModule,
         FormsModule,
         HttpModule
