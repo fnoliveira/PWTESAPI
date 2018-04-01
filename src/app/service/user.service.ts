@@ -1,7 +1,8 @@
-import {Injectable} from '@angular/core';
-import {JwtHelper} from 'angular2-jwt';
+import { Injectable } from '@angular/core';
 
-import {TOKEN_NAME} from './../auth/auth.constant';
+import { JwtHelper } from 'angular2-jwt';
+
+import { TOKEN_NAME } from './../auth/auth.constant';
 
 @Injectable()
 export class UserService {
@@ -14,7 +15,7 @@ export class UserService {
 
   login(accessToken: string) {
     const decodedToken = this.jwtHelper.decodeToken(accessToken);
-    console.log(decodedToken);
+    /*console.log(decodedToken);*/
 
     this.isAdmin = decodedToken.authorities.some(el => el === 'ADMIN_USER');
     this.accessToken = accessToken;

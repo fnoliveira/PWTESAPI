@@ -46,7 +46,7 @@ export class FuseLoginComponent implements OnInit {
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
-            email: ['', [Validators.required, Validators.email]],
+            email: ['', [Validators.required]],
             password: ['', Validators.required]
         });
 
@@ -77,7 +77,7 @@ export class FuseLoginComponent implements OnInit {
 
     login() {
         this.loading = true;
-
+        console.log('passou aqui 1');
         this.authenticationService.login('master', '123456')
             .subscribe(
                 result => {

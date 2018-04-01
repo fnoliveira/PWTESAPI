@@ -40,7 +40,7 @@
                     </a>
                 </div>
 
-                <button mat-raised-button color="accent" class="submit-button" aria-label="LOG IN"
+                <button mat-raised-button color="accent" class="submit-button" (click) = "login()" aria-label="LOG IN"
                         [disabled]="loginForm.invalid">
                     LOGIN
                 </button>
